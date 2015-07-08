@@ -122,7 +122,7 @@ public class intensifier {
             commonWidth = (int) Math.ceil(img.getWidth()*intensity);
             frame2Offset = (int) Math.ceil((img.getWidth()-commonWidth)/2);
             frame2OffsetHeight = (int) Math.ceil((img.getHeight()-commonHeight)/2);
-            if(mode != 1){
+            if(mode == 0 || mode == 2 || mode == 3){
                 frame1 = img.getSubimage(0, 0, commonWidth, commonHeight);
                 if(mode == 0  || mode == 3){
                     frame2 = img.getSubimage(frame2Offset, (img.getHeight() - commonHeight), (img.getWidth()-2*frame2Offset), (img.getHeight() - (img.getHeight() - commonHeight)));
@@ -131,7 +131,7 @@ public class intensifier {
                     }
                 }
                 frame3 = img.getSubimage((img.getWidth() - commonWidth),0,(img.getWidth() - (img.getWidth() - commonWidth)),commonHeight);
-            } else {
+            } else if(mode == 1){
                 frame1 = img;
                 frame2 = img.getSubimage(frame2Offset, frame2OffsetHeight, (img.getWidth()-2*frame2Offset), (img.getHeight()-2*frame2OffsetHeight));
                 frame2 = resize(frame2, frame1.getWidth(), frame1.getHeight());
